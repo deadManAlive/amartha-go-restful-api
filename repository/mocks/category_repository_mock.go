@@ -71,7 +71,7 @@ func (mr *MockCategoryRepositoryMockRecorder) FindAll(ctx any) *gomock.Call {
 }
 
 // FindById mocks base method.
-func (m *MockCategoryRepository) FindById(ctx context.Context, categoryId int) (domain.Category, error) {
+func (m *MockCategoryRepository) FindById(ctx context.Context, categoryId uint64) (domain.Category, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "FindById", ctx, categoryId)
 	ret0, _ := ret[0].(domain.Category)

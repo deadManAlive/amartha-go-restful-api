@@ -57,7 +57,7 @@ func (mr *MockCategoryServiceMockRecorder) Create(ctx, request any) *gomock.Call
 }
 
 // Delete mocks base method.
-func (m *MockCategoryService) Delete(ctx context.Context, categoryId int) error {
+func (m *MockCategoryService) Delete(ctx context.Context, categoryId uint64) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Delete", ctx, categoryId)
 	ret0, _ := ret[0].(error)
@@ -86,7 +86,7 @@ func (mr *MockCategoryServiceMockRecorder) FindAll(ctx any) *gomock.Call {
 }
 
 // FindById mocks base method.
-func (m *MockCategoryService) FindById(ctx context.Context, categoryId int) (web.CategoryResponse, error) {
+func (m *MockCategoryService) FindById(ctx context.Context, categoryId uint64) (web.CategoryResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "FindById", ctx, categoryId)
 	ret0, _ := ret[0].(web.CategoryResponse)

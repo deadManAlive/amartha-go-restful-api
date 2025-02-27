@@ -9,8 +9,8 @@ import (
 
 	"github.com/aronipurwanto/go-restful-api/controller/mocks"
 	"github.com/gofiber/fiber/v2"
-	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
+	"go.uber.org/mock/gomock"
 )
 
 func TestCategoryController(t *testing.T) {

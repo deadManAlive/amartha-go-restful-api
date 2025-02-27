@@ -1,11 +1,12 @@
 package controller
 
 import (
+	"strconv"
+
 	"github.com/aronipurwanto/go-restful-api/exception"
 	"github.com/aronipurwanto/go-restful-api/model/web"
 	"github.com/aronipurwanto/go-restful-api/service"
 	"github.com/gofiber/fiber/v2"
-	"strconv"
 )
 
 type CategoryControllerImpl struct {
@@ -64,7 +65,7 @@ func (controller *CategoryControllerImpl) Update(c *fiber.Ctx) error {
 			Data:   err.Error(),
 		})
 	}
-	categoryUpdateRequest.Id = id
+	categoryUpdateRequest.Id = uint64(id)
 
 	categoryResponse, err := controller.CategoryService.Update(c.Context(), *categoryUpdateRequest)
 	if err != nil {
@@ -100,7 +101,7 @@ func (controller *CategoryControllerImpl) Delete(c *fiber.Ctx) error {
 		})
 	}
 
-	err = controller.CategoryService.Delete(c.Context(), id)
+	err = controller.CategoryService.Delete(c.Context(), uint64(id))
 	if err != nil {
 		if _, ok := err.(exception.NotFoundError); ok {
 			return c.Status(fiber.StatusNotFound).JSON(web.WebResponse{
@@ -133,7 +134,7 @@ func (controller *CategoryControllerImpl) FindById(c *fiber.Ctx) error {
 		})
 	}
 
-	categoryResponse, err := controller.CategoryService.FindById(c.Context(), id)
+	categoryResponse, err := controller.CategoryService.FindById(c.Context(), uint64(id))
 	if err != nil {
 		if _, ok := err.(exception.NotFoundError); ok {
 			return c.Status(fiber.StatusNotFound).JSON(web.WebResponse{
