@@ -19,3 +19,22 @@ func ToCategoryResponses(categories []domain.Category) []web.CategoryResponse {
 	}
 	return categoryResponses
 }
+
+func ToCustomerResponse(customer domain.Customer) web.CustomerResponse {
+	return web.CustomerResponse{
+		Id:         customer.Id,
+		Name:       customer.Name,
+		Email:      customer.Email,
+		Phone:      customer.Phone,
+		Address:    customer.Address,
+		LoyaltyPts: customer.LoyaltyPts,
+	}
+}
+
+func ToCustomerResponses(customers []domain.Customer) []web.CustomerResponse {
+	var customerResponses []web.CustomerResponse
+	for _, customer := range customers {
+		customerResponses = append(customerResponses, ToCustomerResponse(customer))
+	}
+	return customerResponses
+}
