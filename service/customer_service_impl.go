@@ -30,7 +30,13 @@ func (service *CustomerServiceImpl) Create(ctx context.Context, request web.Cust
 		return web.CustomerResponse{}, err
 	}
 
-	customer := domain.Customer{Name: request.Name}
+	customer := domain.Customer{
+		Name:       request.Name,
+		Email:      request.Email,
+		Phone:      request.Phone,
+		Address:    request.Address,
+		LoyaltyPts: 0,
+	}
 	savedCustomer, err := service.CustomerRepository.Save(ctx, customer)
 	if err != nil {
 		return web.CustomerResponse{}, err
@@ -52,6 +58,9 @@ func (service *CustomerServiceImpl) Update(ctx context.Context, request web.Cust
 	}
 
 	customer.Name = request.Name
+	customer.Email = request.Email
+	customer.Phone = request.Phone
+	customer.Address = request.Address
 	updatedCustomer, err := service.CustomerRepository.Update(ctx, customer)
 	if err != nil {
 		return web.CustomerResponse{}, err

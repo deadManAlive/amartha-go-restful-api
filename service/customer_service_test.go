@@ -28,12 +28,31 @@ func TestCreateCustomer(t *testing.T) {
 		expectErr bool
 	}{
 		{
-			name:  "success",
-			input: web.CustomerCreateRequest{Name: "Prabowo Subianto"},
-			mock: func() {
-				mockRepo.EXPECT().Save(gomock.Any(), gomock.Any()).Return(domain.Customer{Id: 1, Name: "Prabowo Subianto"}, nil)
+			name: "success",
+			input: web.CustomerCreateRequest{
+				Name:    "Prabowo Subianto",
+				Email:   "psubianto@mamsiang.gratis",
+				Phone:   "+628123456789",
+				Address: "Istana Negara",
 			},
-			expect:    web.CustomerResponse{Id: 1, Name: "Prabowo Subianto"},
+			mock: func() {
+				mockRepo.EXPECT().Save(gomock.Any(), gomock.Any()).Return(domain.Customer{
+					Id:         1,
+					Name:       "Prabowo Subianto",
+					Email:      "psubianto@mamsiang.gratis",
+					Phone:      "+628123456789",
+					Address:    "Istana Negara",
+					LoyaltyPts: 0,
+				}, nil)
+			},
+			expect: web.CustomerResponse{
+				Id:         1,
+				Name:       "Prabowo Subianto",
+				Email:      "psubianto@mamsiang.gratis",
+				Phone:      "+628123456789",
+				Address:    "Istana Negara",
+				LoyaltyPts: 0,
+			},
 			expectErr: false,
 		},
 	}

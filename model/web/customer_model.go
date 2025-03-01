@@ -1,7 +1,10 @@
 package web
 
 type CustomerCreateRequest struct {
-	Name string `validate:"required,min=1,max=100" json:"name"`
+	Name    string `validate:"required,min=1,max=100" json:"name"`
+	Email   string `validate:"required,min=1,max=100" json:"email"`
+	Phone   string `validate:"required,min=1,max=100" json:"phone"`
+	Address string `validate:"required,min=1,max=100" json:"address"`
 }
 
 type CustomerUpdateRequest struct {
