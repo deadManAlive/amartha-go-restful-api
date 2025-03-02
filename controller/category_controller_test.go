@@ -14,7 +14,7 @@ import (
 	"go.uber.org/mock/gomock"
 )
 
-func setupTestApp(mockService *mocks.MockCategoryService) *fiber.App {
+func setupCategoryControllerTestApp(mockService *mocks.MockCategoryService) *fiber.App {
 	app := fiber.New()
 	categoryController := NewCategoryController(mockService)
 
@@ -34,7 +34,7 @@ func TestCategoryController(t *testing.T) {
 	defer ctrl.Finish()
 
 	mockService := mocks.NewMockCategoryService(ctrl)
-	app := setupTestApp(mockService)
+	app := setupCategoryControllerTestApp(mockService)
 
 	tests := []struct {
 		name           string

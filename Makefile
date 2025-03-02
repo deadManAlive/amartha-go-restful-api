@@ -5,6 +5,7 @@ mockgen:
 
 	mockgen -source=repository/customer_repository.go -destination=repository/mocks/customer_repository_mock.go -package=mocks
 	mockgen -source=service/customer_service.go -destination=service/mocks/customer_service_mock.go -package=mocks
+	mockgen -source=controller/customer_controller.go -destination=controller/mocks/customer_controller_mock.go -package=mocks
 test:
 	go test ./repository
 	go test ./service
